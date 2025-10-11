@@ -1,0 +1,12 @@
+.students_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.student_card{
+    border: 1px solid;
+    padding: 10px;
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+}

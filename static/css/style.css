@@ -1,0 +1,101 @@
+body{
+    background-color: rgb(47, 43, 43);
+}
+
+.students_container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.student_card{
+    border: 1px solid; 
+    padding: 10px;
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+}
+
+
+.student_card_detail{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid;
+    min-height: 90vh;
+    gap: 100px;
+}
+
+.student_image img{
+    width: 100%;
+    min-width: 300px;
+}
+
+.student_info{
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+/* Student create */
+
+.student_form{
+    display: flex;
+    justify-content: center;
+}
+
+.student_input{
+    outline: none;
+}
+
+.student_input2{
+    padding: 10px;
+}
+
+.student_form_button{
+    text-align: end;
+}
+
+button:active{
+    background-color: brown;
+}
+
+/* .student_input{
+
+} */
+
+/* Header */
+
+header{
+    display: flex;
+    justify-content: space-around;
+}
+
+nav{
+    display: flex;
+    gap: 30px;
+}
+
+
+/* Footer */
+
+footer{
+    margin-top: 200px;
+    text-align: center;
+}
+
+
+/* Paginator */
+
+.pagination{
+    text-align: center;
+}
+
+.pagination_btns{
+    margin-top: 70px;
+}
+
+.page_link{
+    padding: 10px;
+    border: 1px solid;
+    margin: 0 10px;
+}
