@@ -2,9 +2,16 @@ body{
     background-color: rgb(47, 43, 43);
 }
 
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .students_container{
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
 }
 
 .student_card{
@@ -67,7 +74,7 @@ button:active{
 
 header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 nav{

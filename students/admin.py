@@ -17,9 +17,10 @@ class StudentAdmin(admin.ModelAdmin):
     ordering = ('-join_date', '-updated_date')
     # list_editable = ("phone_number", 'email')
     readonly_fields = ('join_date', 'updated_date') 
+    filter_horizontal = ("tags", )
     # list_select_related = ("tags")
     # raw_id_fields = ("tags",)
-    # list_per_page = 6
+    # list_per_page = 100
     # fieldsets = (
     #     ('Основная информация', {
     #         'fields': ('name', 'last_name', 'age', 'email', 'phone_number', 'group', 'avatar', )

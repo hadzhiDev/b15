@@ -1,23 +1,25 @@
 {% load static %}
 
-<header>
-    <div>
-        
-        <a href="{% url 'main' %}">
-            <img src="{% static "svg/logo.4b5280eebe95.svg" %}" alt=""> 
-        </a>
-    </div>
-    <nav>
-        <a href="{% url 'main' %}">Home</a>
-        <a href="#">Blog</a>
-        <a href="#">About</a>
-        <a href="#">Contcts</a>
-    </nav>
-    <div>
-        <form action="{% url 'main' %}" method="GET">
-            <input type="text" name="search" value={{ search }}>
-            <input type="submit">
-        </form>
-    </div>
+<div class="container">
 
-</header>
+    <header>
+        <div>         
+            <a href="{% url 'main' %}">
+                <img src="{% static "svg/logo.4b5280eebe95.svg" %}" alt=""> 
+            </a>
+        </div>
+        <nav>
+            <a href="{% url 'main' %}">Home</a>
+            <a href="#">Blog</a>
+            <a href="#">About</a>
+            <a href="#">Contcts</a>
+        </nav>
+        <div>
+            <form action="{% url 'main' %}" method="GET">
+                <input type="text" name="search" value={{ search }}>
+                <input type="submit">
+            </form>
+        </div>
+    </header>
+    
+</div>

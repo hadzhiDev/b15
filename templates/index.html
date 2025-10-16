@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block blocktitle%}
+    {{ title }}
+{% endblock blocktitle %} 
+
 
 {% block content %}
 
@@ -20,9 +24,11 @@
     </form>
 </div>
 
+{% comment %} {{ object_list }} {% endcomment %}
+
 
 <div class="students_container">
-    {% for student in students %}
+    {% for student in object_list %}
         <div class="student_card">
             <div>
                 <a href="{% url 'student_detail' id=student.id %}">
@@ -31,16 +37,16 @@
                     {% else %}
                         No avatar
                     {% endif %}
-                </a>
+                </a> 
             </div>
             <div>name: {{ student.name }}</div>
             <div>group: {{ student.group.name }}</div>
             <div>age: {{ student.age }}</div>
             <div>email: {{ student.email }}</div>
             <div>phone number: {{ student.phone_number }}</div>
-            <div>
-                <a href="{% url 'delete_student' id=student.id%}">remove</a>
-            </div>
+            {% comment %} <div>
+                <a href="{% url 'student_detail' id=student.id%}">remove</a>
+            </div> {% endcomment %}
         </div>
     {%  endfor %} 
 </div>

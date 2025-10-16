@@ -495,3 +495,109 @@ date_hierarchy = 'created_at'
 # | `git clone <url>`            | Копирует чужой репозиторий                                |
 # | `git pull`                   | Забирает последние изменения с GitHub                     |
 # | `git push`                   | Отправляет свои изменения на GitHub                       |
+
+
+
+
+
+
+
+
+# Class-Based Views — это представления (views), написанные на основе классов, а не функций.
+
+# Разница:
+
+# FBV — это простая функция
+# CBV — это класс, где каждый HTTP-метод (GET, POST, PUT, DELETE) — это метод класса
+
+
+from django.views import View
+
+# class StudentCreateView(View):
+#     def get(self, request):
+#         return render(request, 'create_student.html')
+    
+#     def post(self, request):
+#         name = request.POST.get('name')
+#         Student.objects.create(name=name)
+#         return render(request, 'success.html')
+
+
+
+# Преимущества CBV
+
+# Код становится структурированным и переиспользуемым
+# Легко расширять (через наследование)
+
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView 
+# Django уже даёт готовые классы, например ListView, DetailView, CreateView, UpdateView, DeleteView
+
+
+
+# class StudentListView(ListView):
+#     model = Student
+#     template_name = 'students.html'
+#     context_object_name = 'students'
+
+
+# class StudentDetailView(DetailView):
+#     model = Student
+#     template_name = 'student_detail.html'
+#     context_object_name = 'student'
+
+
+
+# «Class-Based Views — это объектно-ориентированный способ писать представления.
+# Вместо одной функции для всех действий, мы используем методы класса: get, post, put, delete.
+# Django уже даёт много готовых классов, чтобы писать меньше кода и работать быстрее.»
+
+
+
+
+
+
+# TemplateView — это класс-представление, которое просто отображает HTML-шаблон без сложной логики.
+
+
+
+
+# class HomeView(TemplateView):
+#     template_name = 'index.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'Главная страница'
+#         context['students'] = 
+#         return context
+
+ 
+
+# Зачем нужен TemplateView
+
+# Когда нужно просто отобразить страницу (о нас, контакты, главная и т.д.)
+# Не нужно писать ручную функцию
+# Более чистый и структурированный код
+
+
+
+
+
+# In Class-Based Views
+
+# Paginations
+# paginate_by = 10
+
+
+# Forms
+# form_class = StudentForm
+
+
+# Filters
+# from django_filters.views import FilterView
+
+# class StudentFilterView(FilterView):
+#     model = Student
+#     template_name = 'students.html'
+#     context_object_name = 'students'
+#     filterset_class = StudentFilter
+#     paginate_by = 10

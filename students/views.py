@@ -2,10 +2,97 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 from django.core.paginator import Paginator
+from django.views import View
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
+from django.views.generic.base import TemplateView
+from django_filters.views import FilterView
 
 from students.models import Student, Group
 from students.forms import StudentForm, StudentModelForm
 from students.filters import StudentFilter
+
+
+class AboutTemplateView(TemplateView):
+    template_name = "about.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "About Page"
+        return context
+
+
+class MainTemplateView(TemplateView):
+    template_name = "index.html"
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["students"] = Student.objects.all()
+    #     context["title"] = "Main Page"
+    #     print(context)
+    #     return context
+
+
+
+class StudentListView(ListView):
+    paginate_by = 1
+    template_name = "index.html"
+    model = Student
+    
+
+
+class StudentListFilter(FilterView):
+    paginate_by = 1
+    template_name = "index.html"
+    model = Student
+    filterset_class = StudentFilter
+
+
+
+class StudentDetailView(DetailView):
+    model = Student
+    template_name = 'student_detail.html'
+    context_object_name = 'student'  
+
+
+class StudentCreateView(CreateView):
+    model = Student
+    template_name = 'student_create.html'
+    form_class = StudentModelForm
+    
+
+
+
+class StudentView(View):
+    def get(self, request):
+        students = Student.objects.all()
+        search = request.GET.get('search')
+        if search:
+            students = Student.objects.filter(name__icontains=search)
+
+        filter_set = StudentFilter(request.GET, queryset=students)
+
+        page = request.GET.get('page', 1)
+        limit = request.GET.get('limit', 2)
+
+        paginator = Paginator(filter_set.qs, limit)
+        students = paginator.get_page(page)
+
+        return render(request, 'index.html', {"students": students})
+    
+    def post(self, request):
+        name = request.POST.get('name')
+        name = request.POST.get('name')
+        name = request.POST.get('name')
+        name = request.POST.get('name')
+        Student.objects.create(name=name)
+        return render(request, 'index.html')
+    
+
+# class StudentDetailView(View):
+#     def get(self, request, id):
+#         student = get_object_or_404(Student, id=id)
+#         print(student)
+#         return render(request, 'student_detail.html', {'student': student})
 
 
 def main(request):
