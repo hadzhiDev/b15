@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from .models import Student, Group, Teacher, Tag
+from .models import Student, Group, Teacher, Tag, StudentContract
+
+
+
+class StudentContractAdmin(admin.ModelAdmin):
+    list_display = ('student__name', "balance", "student__join_date")
+    search_fields = ('student__name',)
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -55,3 +61,5 @@ admin.site.register(Tag, TagAdmin)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Group, GroupAdmin)
 admin.site.register(Teacher, TeacherAdmin)
+admin.site.register(StudentContract, StudentContractAdmin)
+

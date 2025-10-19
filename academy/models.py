@@ -41,6 +41,18 @@ class Student(models.Model):
     def __str__(self):
         return f'{self.name} - {self.group.name}'
     
+
+class StudentContract(models.Model):
+    student = models.OneToOneField(Student, on_delete=models.CASCADE, related_name='contract')
+    balance = models.DecimalField(default=0, decimal_places=2, max_digits=10, verbose_name='Баланс', )
+
+    def __str__(self):
+        return f'Contract for {self.student.name}, balance: {self.balance}'
+    
+    class Meta:
+        verbose_name = "Контракт для студента"
+        verbose_name_plural = 'Контракты для студентов'
+    
     
 # class StudentTag(models.Model):
 #     student = models.ForeignKey(Student, on_delete=models.CASCADE)

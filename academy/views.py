@@ -7,9 +7,9 @@ from django.views.generic import ListView, DetailView, UpdateView, DeleteView, C
 from django.views.generic.base import TemplateView
 from django_filters.views import FilterView
 
-from students.models import Student, Group
-from students.forms import StudentForm, StudentModelForm
-from students.filters import StudentFilter
+from academy.models import Student, Group
+from academy.forms import StudentForm, StudentModelForm
+from academy.filters import StudentFilter
 
 
 class AboutTemplateView(TemplateView):

@@ -1,6 +1,6 @@
 from django import forms
 
-from students.models import Student, Group, Tag
+from academy.models import Student, Group, Tag
 
 
 class StudentForm(forms.Form):

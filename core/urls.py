@@ -30,7 +30,7 @@ urlpatterns = [
     # path('students/<int:id>/', student_detail, name="student_detail"),
     # path('students/<int:id>/update/', student_update, name="student_update"),
     # path('students/<int:id>/delete/', delete_student, name="delete_student"),
-    path('', include('students.urls'))
+    path('', include('academy.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
