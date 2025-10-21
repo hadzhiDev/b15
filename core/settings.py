@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news',
     'academy',
+    'accounts',
     'phonenumber_field',
     'django_filters',
 ]

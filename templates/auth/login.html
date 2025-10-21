@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block blocktitle %}Login Page{% endblock %}
+
+{% block content %}
+    <h1> Login Form </h1>
+    <div>
+        
+    </div>
+    <form action="{% url 'login' %}" method='POST'>
+        {% csrf_token %}
+        <div class="student_input">
+            <label for="username">Username</label>
+            <input type="text" name='username'>
+        </div>
+        <div class="student_input">
+            <label for="password">Password</label>
+            <input type="text" name='password'>
+        </div>
+        <div class="student_input">
+            <button>login</button>
+        </div>
+
+    </form>
+
+{% endblock content %}
