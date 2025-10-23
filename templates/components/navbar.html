@@ -13,6 +13,13 @@
             <a href="#">Blog</a>
             <a href="#">About</a>
             <a href="#">Contcts</a>
+
+            {% if request.user.is_staff or request.user.is_superuser %}
+                <a href="{% url 'admin_view' %}">Admin Page</a>
+            {% else %}
+                <a href="{% url 'register' %}">Registeration</a>
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
         </nav>
         <div>
             <form action="{% url 'main' %}" method="GET">

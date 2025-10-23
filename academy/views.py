@@ -8,7 +8,7 @@ from django.views.generic.base import TemplateView
 from django_filters.views import FilterView
 
 from academy.models import Student, Group
-from academy.forms import StudentForm, StudentModelForm
+from custom_admin.forms import StudentForm, StudentModelForm
 from academy.filters import StudentFilter
 
 
@@ -46,18 +46,6 @@ class StudentListFilter(FilterView):
     model = Student
     filterset_class = StudentFilter
 
-
-
-class StudentDetailView(DetailView):
-    model = Student
-    template_name = 'student_detail.html'
-    context_object_name = 'student'  
-
-
-class StudentCreateView(CreateView):
-    model = Student
-    template_name = 'student_create.html'
-    form_class = StudentModelForm
     
 
 
