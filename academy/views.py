@@ -24,12 +24,12 @@ class AboutTemplateView(TemplateView):
 class MainTemplateView(TemplateView):
     template_name = "index.html"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["students"] = Student.objects.all()
-    #     context["title"] = "Main Page"
-    #     print(context)
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["students"] = Student.objects.all()
+        context["title"] = "Main Page"
+        print(context)
+        return context
 
 
 

@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+
+    Hello world
+    <div class="student_card_detail">
+        <div>
+            <h1>{{ news.title }}</h1>
+            <h2>{{ news.subtitle }}</h2>
+            <div class="student_info">created date: {{ news.created_at }}</div>
+            <div class="student_info">categor: {{ news.category.name }}</div>
+        </div>
+        <div class="student_image">
+            {% if news.image %}
+                <img src="{{ news.image.url }}" alt="{{ news.title }}">
+            {% else %}
+                No Image
+            {% endif %}
+        </div>
+    </div>
+        {{ news.content|safe }}
+    <div>
+    </div>
+    
+</body>
+</html>

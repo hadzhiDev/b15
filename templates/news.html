@@ -10,9 +10,9 @@
 
 <h1>Hello, world! from templates</h1>
 
-<h2>Students</h2>
+<h2>News</h2>
 
-<div>
+{% comment %} <div>
     <h2>Filter Students</h2>
 
     <form method='GET'>
@@ -22,32 +22,29 @@
             <button>filter</button>
         </div>
     </form>
-</div>
+</div> {% endcomment %}
 
 {% comment %} {{ object_list }} {% endcomment %}
 
 
 <div class="students_container">
-    {{ students|join:", " }}
 
-    {% for student in students %}
+    {% for news in news_list %}
         <div class="student_card">
             <div>
                 {% comment %} <a href="{% url 'student_detail' id=student.id %}"> {% endcomment %}
-                    {% if student.avatar %}
-                        <img src="{{ student.avatar.url }}" alt="{{ student.name }}">
+                    {% if news.image %}
+                        <img src="{{ news.image.url }}" alt="{{ news.title }}">
                     {% else %}
-                        No avatar
+                        No image
                     {% endif %}
                 {% comment %} </a>  {% endcomment %}
             </div>
-            <div>name: {{ student.name|upper }}</div>
-            <div>group: {{ student.group.name }}</div>
-            <div>age: {{ student.age }}</div>
-            <div>email: {{ student.email }}</div>
-            <div>phone number: {{ student.phone_number }}</div>
-            <div>balance: {{ student.contract.balance }}</div>
-            <div>active ?: {{ student.is_active|yesno:"Да,Нет" }}</div>
+            <div>name: {{ news.title|upper }}</div>
+            <div>name: {{ news.subtitle|upper }}</div>
+            <div>name: {{ news.category.name }}</div>
+            <div>name: {{ news.created_at }}</div>
+            {% comment %} <div>name: {{ news.content }}</div> {% endcomment %}
             {% comment %} <div>
                 <a href="{% url 'student_detail' id=student.id%}">remove</a>
             </div> {% endcomment %}
@@ -55,7 +52,7 @@
     {%  endfor %} 
 </div>
 
-<div>
+{% comment %} <div>
     {% if is_paginated %} 
         <div class="pagination">
             <div class="pagination_btns">
@@ -78,5 +75,5 @@
         </div>
     {% endif %}
 </div>
-
-{% endblock content %}
+{% endcomment %}
+{% endblock content %} 
