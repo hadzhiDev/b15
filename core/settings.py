@@ -216,3 +216,6 @@ CKEDITOR_CONFIGS = {
         'contentsCss': [ ],
     }
 }
+
+
+LOGIN_URL = '/login/'  # redirect to login page if not logged in
