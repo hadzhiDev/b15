@@ -12,6 +12,27 @@ from custom_admin.forms import StudentForm, StudentModelForm
 from academy.filters import StudentFilter
 
 
+def visit_counter(reqeust):
+    visit = reqeust.session.get("visit", 0)
+    reqeust.session["visit"] = visit + 1
+    
+    return HttpResponse(f"You vistid this page {visit + 1} times")
+
+
+def set_cookie_view(request):
+    response = HttpResponse("Кука установлена!")
+    response.set_cookie('username', 'Hojiakbar', max_age=3600) 
+    # username = request.COOKIES.get("username", "Guest")
+    # print(username)
+
+    return response
+    
+
+def get_cookie_view(request):
+    username = request.COOKIES.get('username', 'Гость')
+    return HttpResponse(f"Привет, {username}!")
+
+
 class AboutTemplateView(TemplateView):
     template_name = "about.html"
 

@@ -710,3 +710,113 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 # @register.filter
 # def excited(value):
 #     return f"{value}!!!"
+
+
+
+
+
+
+from django.contrib.sessions.models import Session
+
+
+
+
+# Cookie (куки)
+
+# Cookie — это небольшой файл, который сервер отправляет браузеру пользователя.
+# Браузер сохраняет его и отправляет обратно при каждом запросе на этот же сайт.
+
+# Используются для:
+
+# Запоминания авторизации
+# Корзины покупок
+# Настроек пользователя (язык, тема и т.д.)
+
+
+# Пример работы cookie в Django
+
+
+def set_cookie_view(request):
+    response = HttpResponse("Кука установлена!")
+    response.set_cookie('username', 'Hojiakbar', max_age=3600) 
+    return response
+
+
+# set_cookie(name, value, max_age) — добавляет cookie в ответ сервера.
+
+
+
+
+
+# Прочитать cookie
+
+
+# def get_cookie_view(request):
+#     username = request.COOKIES.get('username', 'Гость')
+#     return HttpResponse(f"Привет, {username}!")
+
+
+# request.COOKIES — словарь со всеми куками пользователя.
+
+
+
+# Удалить cookie
+
+# def delete_cookie_view(request):
+#     response = HttpResponse("Кука удалена!")
+#     response.delete_cookie('username')
+#     return response
+
+
+
+
+# Session (сессия)
+
+# Session — это способ хранить данные на сервере,
+# а в браузере хранится только идентификатор (sessionid).
+
+
+
+# Используется для:
+
+# Авторизации пользователей
+# Хранения данных между запросами
+# Безопасной передачи состояния
+
+
+
+# Как Django хранит сессии
+
+# Пользователь заходит → Django создаёт уникальный sessionid
+# Этот sessionid отправляется браузеру в cookie
+# Все данные (user_id, корзина и т.д.) сохраняются на сервере (в базе данных)
+
+
+# Установить данные в сессию
+
+def set_session_view(request):
+    request.session['username'] = 'Hojiakbar'
+    request.session['age'] = 22
+    return HttpResponse("Сессия установлена!")
+
+
+# Прочитать данные из сессии
+
+# def get_session_view(request):
+#     username = request.session.get('username', 'Гость')
+#     return HttpResponse(f"Привет, {username}!")
+
+
+
+# Удалить конкретное значение
+# def delete_session_key(request):
+#     if 'username' in request.session:
+#         del request.session['username']
+#     return HttpResponse("Поле username удалено из сессии")
+
+
+# Очистить всю сессию
+
+# def clear_session(request):
+#     request.session.flush()
+#     return HttpResponse("Сессия полностью очищена!")
